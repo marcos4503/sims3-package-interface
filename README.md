@@ -9,6 +9,16 @@
 > [!TIP]
 > Remembering that ALL credits for the creation of the S3PI library go to the incredible "<a href="https://sourceforge.net/u/pljones/profile/">Peter L Jones</a>"! 🙂
 
+# Basics
+
+The "Sims 3 Package Interface" provides a core library of portable code that "understands" Sims3 game packages. Note that (with some minor tweaks) the core library code also understands other game package formats (e.g. SimCity Online, Sims4).
+
+Along with the core library are a number of "wrappers" that provide the main part of the project. These handle deserialization and serialization of data within the package (or any other source).
+
+Further tools can use this library and wrappers to manipulate the data content of Package files of Sims games.
+
+Note that development on this library and wrappers provided here has now finished.
+
 # What is S3PI?
 
 The "s3pi" is an acronym for "Sims3™ Package Interface". It provides support for accessing the data within individual "package" files used by Electronic Arts Sims3™ game. A "package" is a disk file with a file extension usually of ".package" (but other extensions are used). However, the main identifying feature used by s3pi is the four byte magic cookie at the start of the file, which must be "DBPF". In addition, the file format version number must be 2 for Sims 3™ (or 3 for Sim City 5™, which is barely supported).
