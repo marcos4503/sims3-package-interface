@@ -15,7 +15,7 @@ The "s3pi" is an acronym for "Sims3™ Package Interface". It provides support f
 
 Note that "protected" packages (with a magic cookie of "DBPP") are not supported. Note that "temporary" packages (with a magic cookie of "DBBF") are not currently supported.
 
-The s3pi is a set of .Net assemblies (documented below and available here) that implement the descriptions from the <a href="https://simswiki.info/wiki.php?title=Tutorials:TS3_Advanced_Coding_Tutorials">Sims 3 Wiki</a>. Note that it is always worth checking there if you are unsure of something, either about how something should work or if you think you have found a problem in s3pi, which remains quite possible. Neither the wiki nor the library is always right - indeed, it can be that both are wrong in different ways.
+The s3pi is a set of .Net assemblies (documented below and available here) that implement the descriptions from the <a href="https://simswiki.info/wiki.php?title=Tutorials:TS3_Advanced_Coding_Tutorials">Sims 3 Wiki</a> (with these pages alternatively <a href="https://marcos4503.github.io/sims3-package-interface/Repository-Pages/sims3-wiki-files/index-of.html">available here</a> as wiki-mirror). Note that it is always worth checking there if you are unsure of something, either about how something should work or if you think you have found a problem in s3pi, which remains quite possible. Neither the wiki nor the library is always right - indeed, it can be that both are wrong in different ways.
 
 # S3PI Help
 
