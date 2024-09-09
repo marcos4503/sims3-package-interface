@@ -28,7 +28,7 @@ This page is divided into three remaining sections.
 - And finally, a brief section on RCOL resources and how to extend the library to support them.
 - How to think about using S3PI, and some C# sample code
 
-Once you understand how to use a wrapper to access data in a package, you should consult the Sims3 Wiki <a href="https://simswiki.info/wiki.php?title=Sims_3:PackedFileTypes">list of file types</a> to see which are supported and how to get the support (if not part of the s3pi distribution).
+Once you understand how to use a wrapper to access data in a package, you should consult the Sims3 Wiki <a href="https://marcos4503.github.io/sims3-package-interface/Repository-Pages/sims3-wiki-files/Files%20By%20Type%20Code.html">list of file types</a> to see which are supported and how to get the support (if not part of the s3pi distribution).
 
 > [!TIP]
 > If you have unanswered questions, please feel free to post here in the <a href="https://github.com/marcos4503/sims3-package-interface/discussions">Forum/Discussions</a>. It will be a pleasure to help!
