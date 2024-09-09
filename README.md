@@ -1,0 +1,1 @@
+# sims3-package-interface
