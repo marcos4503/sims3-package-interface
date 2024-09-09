@@ -8,9 +8,6 @@
 
 > [!TIP]
 > Remembering that ALL credits for the creation of the S3PI library go to the incredible "<a href="https://sourceforge.net/u/pljones/profile/">Peter L Jones</a>"! 🙂
->
-
-> Now, moving on to the Repository...
 
 # What is S3PI?
 
