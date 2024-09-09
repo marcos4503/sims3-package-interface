@@ -19,7 +19,7 @@ The s3pi is a set of .Net assemblies (documented below and available here) that 
 
 # S3PI Help
 
-The s3pi library comes with a compiled help file (.chm) that describes much of what you need to know. You can also access a version of this online, <a href="http://peter.drealm.info/Help/Index">here</a>. This page tries to give a quick overview, as the library is pretty extensive and it may be tricky working out what it is you do need to know.
+The s3pi library comes with a compiled help file (.chm) that describes much of what you need to know. You can also access a version of this, <a href="https://marcos4503.github.io/sims3-package-interface/Repository-Pages/s3pi-files/library-compiled-help-file.chm">here</a>. This page tries to give a quick overview, as the library is pretty extensive and it may be tricky working out what it is you do need to know.
 
 This page is divided into three remaining sections.
 
