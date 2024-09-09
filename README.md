@@ -287,6 +287,10 @@ Other than extending `ARCOLBlock` rather than `AResource`, the task of writing a
 
 However, Electronic Arts / Maxis have recently started making life a little harder in that some single-RCOL containers do not exactly conform to the original understanding of how the container should work. Be aware of this when reading the code or writing your own.
 
+# As a Programmer, How Should I Implement S3PI in My Program?
+
+a
+
 # Tips To Avoid Package Files Conflicts
 
 As you probably already understand, The Sims Package files are like a "zip file", containing several other files inside them. Each file/resource inside a Package file has a TGI associated with it.
