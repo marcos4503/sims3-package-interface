@@ -1,14 +1,12 @@
 # REPOSITORY NOTICE!
 
-```
-Nowadays it is very difficult to find solid information and real help regarding S3PI, even more so if you are trying to create a program using S3PI as a library to interact with The Sims Package files. Furthermore, the S3PI library is not on GitHub and does not have a repository here.
+>Nowadays it is very difficult to find solid information and real help regarding S3PI, even more so if you are trying to create a program using S3PI as a library to interact with The Sims Package files. Furthermore, the S3PI library is not on GitHub and does not have a repository here.
+>
+>For these reasons, I decided to create this Repository to store the S3PI library in its entirety, with code examples and tips on how to use it correctly. In addition, I have compiled here all the useful information I found on the Internet related to S3PI!
+>
+>If you would like to contribute more information, please create a Pull Request or report it via the "Issues" tab. I will do my best to keep this repository with as much information and examples as I can, but if the author of S3PI requests it, I will take this repository offline.
 
-For these reasons, I decided to create this Repository to store the S3PI library in its entirety, with code examples and tips on how to use it correctly. In addition, I have compiled here all the useful information I found on the Internet related to S3PI!
-
-If you would like to contribute more information, please create a Pull Request or report it via the "Issues" tab. I will do my best to keep this repository with as much information and examples as I can, but if the author of S3PI requests it, I will take this repository offline.
-```
-
-> [!TIP]
+> [!IMPORTANT]
 > Remembering that ALL credits for the creation of the S3PI library go to the incredible "<a href="https://sourceforge.net/u/pljones/profile/">Peter L Jones</a>"! 🙂
 
 # Basics
