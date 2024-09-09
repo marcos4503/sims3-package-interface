@@ -1,4 +1,4 @@
-# REPOSITORY NOTICE
+# REPOSITORY NOTICE!
 
 > Nowadays it is very difficult to find solid information and real help regarding S3PI, even more so if you are trying to create a program using S3PI as a library to interact with The Sims Package files. Furthermore, the S3PI library is not on GitHub and does not have a repository here.
 >
@@ -56,9 +56,9 @@ First, let's take a look at each of the remaining assemblies. After this, I'll p
 > [!NOTE]
 > You must agree to the GPLv3 licence before distributing your code. Notice that, as you're linking to a GPLv3 library, you are essentially re-using it and must distribute your code under equivalent terms. You can find further details on <a href="https://www.fsf.org/">The Free Software Foundation's</a> site.
 
-## Overview of the Assemblies
+# Overview of the Assemblies
 
-### System.Custom
+## System.Custom
 
 **When to include it:** Always - it's required by several other parts of library.
 
@@ -74,7 +74,7 @@ First, let's take a look at each of the remaining assemblies. After this, I'll p
 - `System.Text.SevenBitString` - Read and write a seven-bit encoded length-prefixed string in a given `Encoding` from or to a `Stream`.
 - `System.Security.Cryptography.Sims3PackCRC` - Calculate the CRC of a data chunk stored in a Sims3Pack file. (OK, arguably this has no reason being here but in terms of code dependencies, it makes sense!)
 
-### s3pi.Settings
+## s3pi.Settings
 
 **When to include it:** Always.
 
@@ -82,7 +82,7 @@ First, let's take a look at each of the remaining assemblies. After this, I'll p
 
 **Further reading:** Nothing.
 
-### s3pi.Interfaces
+## s3pi.Interfaces
 
 **When to include it:** Always. Not only is it required by the library itself but it defines the public API.
 
@@ -94,7 +94,7 @@ First, let's take a look at each of the remaining assemblies. After this, I'll p
 
 Note that the namespace is "polluted" by classes from `s3pi.GenericRCOL`. Purists might also consider some of the helper classes "pollution"...
 
-### s3pi.Package
+## s3pi.Package
 
 **When to include it:** When working with Sims 3 package files.
 
@@ -102,7 +102,7 @@ Note that the namespace is "polluted" by classes from `s3pi.GenericRCOL`. Purist
 
 **Further reading:** Nothing.
 
-### s3pi.WrapperDealer
+## s3pi.WrapperDealer
 
 **When to include it:** When working with resource wrappers.
 
@@ -114,7 +114,7 @@ Note that the namespace is "polluted" by classes from `s3pi.GenericRCOL`. Purist
 
 The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for understanding how to use a resource once you have a reference to it.
 
-### s3pi.Extensions
+## s3pi.Extensions
 
 **When to include it:** If you want community standard file names.
 
@@ -122,7 +122,7 @@ The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for
 
 **Further reading:** `s3pi.Extensions` namespace. This area of the library still needs properly documenting.
 
-### s3pi.CustomForms
+## s3pi.CustomForms
 
 **When to include it:** When you want CopyableMessageBox (or IssueException).
 
@@ -130,7 +130,7 @@ The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for
 
 **Further reading:** `CopyableMessageBox` class, `CopyableMessageBoxButtons` enumeration and `CopyableMessageBoxIcon` enumeration.
 
-### s3pi.Controls
+## s3pi.Controls
 
 **When to include it:** When you want one of the custom controls.
 
@@ -138,7 +138,7 @@ The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for
 
 **Further reading:** `ResourceTypeCombo` class, `TGIBlockCombo` class and `TGIBlockListEditor` class. This area of the library still needs properly documenting.
 
-### DDSPanel
+## DDSPanel
 
 **When to include it:** When you use DDS images and want a way to display them in a WinForms application.
 
@@ -146,7 +146,7 @@ The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for
 
 **Further reading:** `DDSPanel` class and `DDSPanel.MaskChannel` enumeration.
 
-### s3pi.Helpers
+## s3pi.Helpers
 
 **When to include it:** May be useful when writing a helper for s3pe.
 
@@ -154,7 +154,7 @@ The `s3pi.DefaultResource` and `s3pi.GenericRCOLResource` provide the basics for
 
 **Further reading:** `s3pi.Helpers` namespace. This area of the library still needs properly documenting.
 
-## Setting Up Your Project
+# Setting Up Your Project
 
 Set up the references you need based on the previous section `System.Custom`, `s3pi.Settings`, `s3pi.Interfaces` and any others. In addition, you will need to consider whether you want to reference specific wrapper assemblies. In most cases, this will be the appropriate approach. Your referenced assemblies will, by default, get copied to the project output folder, along with your program.
 
@@ -162,9 +162,9 @@ Note that there are certain additional components used, such as configuration fi
 
 You may want to look at the s3oc and s3pe Visual Studio solutions to see how I've done it.
 
-## Writing a wrapper
+# Writing a wrapper
 
-### Background
+## Background
 
 s3pi provides a number of C# classes to assist programs wanting to access Sims 3 package files and the resources stored within them. The "core library" only understands the package container itself -- it has no understanding of the content of resources. That is delegated to "wrappers". Wrappers are associated with resources by declaring the list of `ResourceTypes` they support. The core library returns an instance of the approriate resource class to the library "client".
 
@@ -174,21 +174,21 @@ The core library identifies wrappers by searching through the assemblies in the 
 
 The `WrapperDealer` has an interface that lets client applications enable and disable particular combinations of `ResourceType` and wrapper.
 
-### Assumptions
+## Assumptions
 
 - You can code in C# (or another language that compiles to MSIL with code that the core library understands).
 - You know the data format of the resource within a Sims 3 package and you want to write an extension to the s3pi library that allows the resource to be accessed by library "clients".
 - You understood that last sentence ;).
 
-### Pre-requisites
+## Pre-requisites
 
 - Agree to the GPL3 licence before distributing your code. Notice that, as you're linking to a GPL3 library, you are essentially re-using it and must distribute your code under equivalent terms. You can find further details on <a href="http://www.fsf.org/">The Free Software Foundation's</a> site.
 - VisualStudio or MONO (or...). I've been using VisualStudio 2012 Express Edition for Desktop and .Net 4. (I tested compiling the core under MONO and using it with the demo front end (as s3pe was known) compiled under VS2008 a long time ago. If this still works, it would be useful for someone to report success.)
 - The s3pi library. You don't need the source (but it may be useful for examples... or not). You do need to install the library, though, and tell your development environment about it.
 
-### Examples
+## Examples
 
-#### DefaultResource
+### DefaultResource
 
 I have now included `DefaultResource` in the s3pi library documentation.
 
@@ -215,7 +215,7 @@ The constructor for `DefaultResource` demonstrates an important point -- a new r
 
 That's it! There's nothing else you must do. Of course, you haven't provided anyone with a reason to use your wrapper yet...
 
-#### ImageResource
+### ImageResource
 
 > [!NOTE]
 > After some thought, `ImageResource` and `TextResource` are considered deprecated. However, they will remain in the library for the foreseeable future. Despite what is written below, I no longer consider it a good idea to have a wrapper for a resource that is just a byte stream.
@@ -245,7 +245,7 @@ You'll notice the stream position getting set to zero before use -- always assum
 
 The `TextResource` wrapper is very similar -- text resources are defined in a file; it has a "Value" property returning the resource as a string value. In addition, it has some text-specific properties, including accessing the data as XML. (It would be better design to have the XML wrapper as an extension of the text wrapper and only handle known XML files in it...)
 
-#### NameMapResource
+### NameMapResource
 
 This wrapper handles a single resource type - the package name map. It provides an `IDictionary<ulong, string>` interface, allowing the map to be read and updated. It's a very simple example of how to handle updates.
 
@@ -263,17 +263,17 @@ The `UnParse()` method exports the data structure back to a new stream, creating
 
 As mentioned above, the `Stream` property needs to know if the resource has been dirtied. The implementation of the `IDictionary<ulong, string>` interface takes care of this by calling `OnResourceChanged(this, EventArgs.Empty)` for update operations. This is provided on `AResource` and sets the resource to dirty, as well as calling the `ResourceChanged` handlers of anything listening to the event.
 
-### Self-Study
+## Self-Study
 
-#### CatalogResource
+### CatalogResource
 
 CatalogResource really just takes the ideas in NameMapResource further. It has an abstract class for a related set of resources. I've tried to keep to a consistent pattern of coding to help understand what's happening. I leave it as an exercise to the reader to work through the implementation to see how all the classes are interacting. Hopefully it should make sense! (If not, I'll be stumped when a bug comes up!!)
 
-#### RigResource
+### RigResource
 
 This has the benefit of being recent and, whilst relatively simple, does have some interesting bits. It is also one of the wrappers I most often consult myself when writing a new one.
 
-## Writing an RCOL Block Handler
+# Writing an RCOL Block Handler
 
 An RCOL resource is a normal resource, as described above - with the fundamental difference that it is a container for other "resources", known as RCOL blocks. Each block has a format identified by a four character code ("FOURCC" or Tag); the blocks also have Resource Types. The RCOL resource (in the package) has the same type as the first RCOL block in (in the resource) and the resource is named after this first RCOL block. Some RCOL resources only contain a single RCOL block; others contain multiple RCOL blocks.
 
@@ -286,3 +286,23 @@ There is an abstract class, `ARCOLBlock`, that defines the fundamentals. There i
 Other than extending `ARCOLBlock` rather than `AResource`, the task of writing an RCOL block handler is very similar to writing a resource wrapper.
 
 However, Electronic Arts / Maxis have recently started making life a little harder in that some single-RCOL containers do not exactly conform to the original understanding of how the container should work. Be aware of this when reading the code or writing your own.
+
+# Tips To Avoid Package Files Conflicts
+
+As you probably already understand, The Sims Package files are like a "zip file", containing several other files inside them. Each file/resource inside a Package file has a TGI associated with it.
+
+The TGI is basically the Type, Group and Instance. The Type and Group are 8-digit Hexadecimal, while the Instance is a 16-digit Hexadecimal. In order to avoid conflicts between resources when loaded by the game, EVERY resource present in all Packages loaded by the game must have a unique TGI combination.
+
+When you open a Package file with S3PE, you can easily see the Type, Group, and Instance of each resource present in the opened Package. Now that you know this, keep in mind that while editing The Sims Package files, you should always ensure that the resources you insert into Package files must always have a unique TGI.
+
+If you have any further questions about this, you can read <a href="https://marcos4503.github.io/sims3-package-interface/Repository-Pages/other-content/about-mods-conflicts.pdf">this article</a>, which talks about and explains very well what mod conflicts are, how they occur, how to resolve them, etc.
+
+# That's all!
+
+If you've read this far, you should have a decent understanding of what S3PI is and how to use it. If you want to access the old official S3PI repository, you can use <a href="https://sourceforge.net/projects/s3pi/">this link</a>. Remembering that all credit for creating the S3PI library goes to Peter L Jones. 😀
+
+<br>
+
+<p align="center">
+Repository created with ❤ by Marcos Tomaz
+</p>
