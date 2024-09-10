@@ -305,6 +305,8 @@ using s3pi;
 using s3pi.Interfaces;
 using s3pi.Package;
 
+
+
 //Open the package
 IPackage package = Package.OpenPackage(0, "C:/Folder/someFile.package", true);
 
