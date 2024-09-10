@@ -1,0 +1,7 @@
+#This is a Jekyll file to exclude directories to not be uploaded and be live in GitHub Pages of this Repository
+
+exclude: 
+  - "S3PE-Program"
+  - "S3PE-Program-Source"
+  - "S3PI-Library-DLLs"
+  - "S3PI-Library-DLLs-Source"
