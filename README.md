@@ -333,6 +333,29 @@ Package.ClosePackage(0, package);
 > [!IMPORTANT]
 > It is very important that you always close an opened Package file after you are done working on it.
 
+# Sample C# Codes
+
+> [!NOTE]
+> The Dream Launcher is a launcher for The Sims 3 created by "marcos4503". The Dream Launcher makes use of S3PI to implement various features, such as merging packages, cleaning up saves, and other functions. You can follow <a href="https://github.com/marcos4503/ts3-dream-launcher">this link</a> to check out the Dream Launcher Repository and take a look at the source code for more examples of S3PI usage. The Dream Launcher was created using C# as the programming language.
+
+### Package Merge
+
+```csharp
+
+```
+
+### Getting SNAP Type Image Resource
+
+```csharp
+
+```
+
+### Editing CASP Resource
+
+```csharp
+
+```
+
 # Tips To Avoid Package Files Conflicts
 
 As you probably already understand, The Sims Package files are like a "zip file", containing several other files inside them. Each file/resource inside a Package file has a TGI associated with it.
