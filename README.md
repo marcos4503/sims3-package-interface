@@ -341,14 +341,77 @@ Package.ClosePackage(0, package);
 ### Package Merge
 
 ```csharp
+using s3pi;
+using s3pi.Interfaces;
+using s3pi.Package;
 
+
+
+//Creates a new Package that will receive the resources from 2 other Packages
+IPackage finalPackage = Package.NewPackage(0);
+
+
+//Open the Package 1 and copy all resources to the final package
+IPackage package1 = Package.OpenPackage(0, "C:/Folder/package1.package", false);
+foreach (IResourceIndexEntry item in package1.GetResourceList)
+    finalPackage.AddResource(item, (package1 as APackage).GetResource(item), true);
+Package.ClosePackage(0, package1);
+
+//Open the Package 2 and copy all resources to the final package
+IPackage package2 = Package.OpenPackage(0, "C:/Folder/package2.package", false);
+foreach (IResourceIndexEntry item in package2.GetResourceList)
+    finalPackage.AddResource(item, (package2 as APackage).GetResource(item), true);
+Package.ClosePackage(0, package2);
+
+
+//Enable compression for all viable resources of final merged package (the same way S3PE does)
+foreach (IResourceIndexEntry item in finalPackage.GetResourceList)
+    item.Compressed = (ushort)((item.Filesize != item.Memsize) ? 0xFFFF : 0x0000);
+//Saves the final Package, result of the merge
+finalPackage.SaveAs("C:/Folder/finalFile.package");
+Package.ClosePackage(0, finalPackage);
 ```
 
 ### Getting SNAP Type Image Resource
 
 ```csharp
+using s3pi;
+using s3pi.Interfaces;
+using s3pi.Package;
 
+
+
+//Open a .nhd save file
+IPackage nhdSaveFile = Package.OpenPackage(0, "C:/Folder/saveFile.nhd", false);
+
+//Search inside the package, by the first thumbnail of type "SNAP" (or hex type "0x6B6D837E")
+foreach (IResourceIndexEntry item in nhdSaveFile.GetResourceList)
+    if (GetLongConvertedToHexStr(item.ResourceType, 8) == "0x6B6D837E")
+    {
+        //Get the base stream for this resource
+        Stream aPackageStream = (nhdSaveFile as APackage).GetResource(item);
+        //Get the base resource using the "ImageResource" s3pi wrapper***
+        IResource baseResource = (IResource)(new ImageResource.ImageResource(0, aPackageStream));
+        //Get the bitmap from base resource stream
+        BitmapImage bitmapImage = new BitmapImage();
+        bitmapImage.BeginInit();
+        bitmapImage.StreamSource = baseResource.Stream;
+        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        bitmapImage.EndInit();
+        bitmapImage.Freeze();
+
+        //... continue ...//
+
+        //Cancel the search
+        break;
+    }
+
+//Close the save file
+Package.ClosePackage(0, nhdSaveFile);
 ```
+
+> [!NOTE]
+> ***d
 
 ### Editing CASP Resource
 
