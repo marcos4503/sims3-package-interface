@@ -474,6 +474,9 @@ openedPackage.SavePackage();
 Package.ClosePackage(0, openedPackage);
 ```
 
+> [!NOTE]
+> Here we use `WrapperDealer` to access the CASP resource, but we could also use Wrapper `CASPartResource` directly to access the CASP resource.
+
 # Tips To Avoid Package Files Conflicts
 
 As you probably already understand, The Sims Package files are like a "zip file", containing several other files inside them. Each file/resource inside a Package file has a TGI associated with it.
