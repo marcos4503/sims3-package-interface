@@ -308,10 +308,10 @@ using s3pi.Package;
 //Open the package
 IPackage package = Package.OpenPackage(0, "C:/Folder/someFile.package", true);
 
-//Delete the resource "0x00B2D882-0x00000000-0x0A12300000FF0000" inside the package
+//Search the resource "0x00B2D882-0x00000000-0x0A12300000FF0000" inside the package
 foreach (IResourceIndexEntry item in package.GetResourceList)
 {
-    //Get this resource TGI
+    //Get current entrie resource TGI
     string typeHex = GetLongConvertedToHexStr(item.ResourceType, 8);
     string groupHex = GetLongConvertedToHexStr(item.ResourceGroup, 8);
     string instanceHex = GetLongConvertedToHexStr(item.Instance, 16);
