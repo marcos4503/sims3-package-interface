@@ -410,13 +410,68 @@ foreach (IResourceIndexEntry item in nhdSaveFile.GetResourceList)
 Package.ClosePackage(0, nhdSaveFile);
 ```
 
-> [!NOTE]
-> ***Note that here, we could use the `WrapperDealer` class so that S3PI would provide us with the correct Wrapper for the resource we are working with, automatically. If we used `WrapperDealer` there, S3PI would automatically bring us the `ImageResource` Wrapper, however, `WrapperDealer` is known to be incompatible with some .NET frameworks, such as WPF itself, causing crashes. For this reason, it is always recommended to use the Wrapper directly, when working with a resource inside the Package file.
+<b>***</b>Note that here, we could use the `WrapperDealer` class so that S3PI would provide us with the correct Wrapper for the resource we are working with, automatically. If we used `WrapperDealer` there, S3PI would automatically bring us the `ImageResource` Wrapper, however, `WrapperDealer` is known to be incompatible with some .NET frameworks, such as WPF itself, causing crashes. For this reason, it is always recommended to use the Wrapper directly, when working with a resource inside the Package file. If we chose to use the `WrapperDealer` class to get the image, the code snippet would look like this...
+
+```csharp
+//...
+
+//Get the resource using WrapperDealer
+IResource resource = WrapperDealer.GetResource(0, nhdSaveFile, item, true);
+//Get the bitmap from base resource stream
+BitmapImage bitmapImage = new BitmapImage();
+bitmapImage.BeginInit();
+bitmapImage.StreamSource = resource.Stream;
+bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+bitmapImage.EndInit();
+bitmapImage.Freeze();
+
+//...
+```
 
 ### Editing CASP Resource
 
 ```csharp
+using s3pi;
+using s3pi.Interfaces;
+using s3pi.Package;
 
+
+
+//Open a package that contains a CASP resource
+IPackage openedPackage = Package.OpenPackage(0, "C:/Folder/clothes.package", true);
+
+//Search the first CASP (or hex type 0x034AEECB) resource inside the package
+foreach (IResourceIndexEntry item in openedPackage.GetResourceList)
+    if (GetLongConvertedToHexStr(item.ResourceType, 8) == "0x034AEECB")
+    {
+        //Get the CASP stream
+        Stream caspStream = WrapperDealer.GetResource(1, openedPackage, item, true).Stream;
+        //Get the CASP resource
+        CASPartResource.CASPartResource sourceCASpart = new CASPartResource.CASPartResource(1, caspStream);
+
+
+        //Allow this CASP for Random Sims
+        sourceCaspart.ClothingCategory |= CASPartResource.ClothingCategoryFlags.ValidForRandom;
+        //Disallow this CASP for Random Sims
+        sourceCaspart.ClothingCategory &= ~CASPartResource.ClothingCategoryFlags.ValidForRandom;
+
+
+        //Delete the old CASP resource
+        openedPackage.DeleteResource(item);
+
+        //Add the new modified resource
+        openedPackage.AddResource(((IResourceKey)item), ((AResource)sourceCaspart).Stream, true);
+
+        //Release streams
+        caspStream.Dispose();
+        caspStream.Close();
+        ((AResource)sourceCaspart).Stream.Dispose();
+        ((AResource)sourceCaspart).Stream.Close();
+    }
+
+//Save the package and close it
+openedPackage.SavePackage();
+Package.ClosePackage(0, openedPackage);
 ```
 
 # Tips To Avoid Package Files Conflicts
