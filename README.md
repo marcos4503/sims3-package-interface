@@ -289,7 +289,47 @@ However, Electronic Arts / Maxis have recently started making life a little hard
 
 # As Programmer, How Should I Use S3PI in My Program?
 
-a
+First, you need to have experience and already know how to edit The Sims Package files, using S3PE software. S3PE basically works as a Graphical Interface for S3PI, which common users can use. Therefore, it is safe to say that S3PI is capable of doing EVERYTHING that S3PE can do, and even more.
+
+> [!NOTE]
+> The S3PE is also available for download in this repository. Both its Executable file and its C# Source Code and Visual Studio solution.
+
+Knowing this, to implement S3PI in your program, you need to code as if your program were using S3PE to perform the action.
+
+Let's say you want to delete a certain resource from a Package file. If you were using S3PE, you would first open that Package file, search the resource to delete. Then you would press `DEL` key to delete that file, and then Save. Once the Package file is saved, you would close it.
+
+If you would do this using S3PE, then your program should perform the same steps if you use S3PI to perform this same action. See the sample code below, performing the action of deleting resource "0x00B2D882-0x00000000-0x0A12300000FF0000" from an open Package file, as an example...
+
+```csharp
+using s3pi;
+using s3pi.Interfaces;
+using s3pi.Package;
+
+//Open the package
+IPackage package = Package.OpenPackage(0, "C:/Folder/someFile.package", true);
+
+//Delete the resource "0x00B2D882-0x00000000-0x0A12300000FF0000" inside the package
+foreach (IResourceIndexEntry item in package.GetResourceList)
+{
+    //Get this resource TGI
+    string typeHex = GetLongConvertedToHexStr(item.ResourceType, 8);
+    string groupHex = GetLongConvertedToHexStr(item.ResourceGroup, 8);
+    string instanceHex = GetLongConvertedToHexStr(item.Instance, 16);
+
+    //If is the target resource, delete it
+    if (typeHex == "0x00B2D882" && groupHex == "0x00000000" && instanceHex == "0x0A12300000FF0000")
+        package.DeleteResource(item);
+}
+
+//Save the changes
+package.SavePackage();
+
+//Close the package
+Package.ClosePackage(0, package);
+```
+
+> [!IMPORTANT]
+> It is very important that you always close an opened Package file after you are done working on it.
 
 # Tips To Avoid Package Files Conflicts
 
