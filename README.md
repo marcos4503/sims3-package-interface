@@ -411,7 +411,7 @@ Package.ClosePackage(0, nhdSaveFile);
 ```
 
 > [!NOTE]
-> ***d
+> ***Note that here, we could use the `WrapperDealer` class so that S3PI would provide us with the correct Wrapper for the resource we are working with, automatically. If we used `WrapperDealer` there, S3PI would automatically bring us the `ImageResource` Wrapper, however, `WrapperDealer` is known to be incompatible with some .NET frameworks, such as WPF itself, causing crashes. For this reason, it is always recommended to use the Wrapper directly, when working with a resource inside the Package file.
 
 ### Editing CASP Resource
 
